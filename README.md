@@ -1,28 +1,4 @@
-<<<<<<< HEAD
-# README
+#### 概要
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-=======
->>>>>>> d2d8933de8cf6e9e3059e3abd75999a702b377bc
-# blog_new
+はてなブログの AtomPub API を使い、Rails アプリから記事一覧・本文を取得できるようにする。  
+将来的に、記事データをDBに保存し、表示・編集・削除などのCRUD機能のベースにする予定。
