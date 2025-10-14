@@ -2,5 +2,8 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "daisyui": "^5.1.31"
+  },
+  "scripts": {
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --watch"
   }
 }
