@@ -1,7 +1,7 @@
 ARG RUBY_VERSION=3.3.9
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
-WORKDIR /rails
+WORKDIR /app
 
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl libjemalloc2 libvips sqlite3 && \
@@ -14,7 +14,7 @@ ENV RAILS_ENV="production" \
 
 FROM base AS build
 
-RUN apt-get update -qq && \
+RUN apt-get update -qq && apt-get install -y watchman &&\
     apt-get install --no-install-recommends -y build-essential git libyaml-dev pkg-config && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
