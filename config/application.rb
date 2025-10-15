@@ -1,3 +1,4 @@
+
 require_relative "boot"
 
 require "rails/all"
@@ -23,5 +24,11 @@ module NewBlog
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.generators.system_tests = nil
+    config.generators do |g|
+      g.skip_routes true
+      g.helper false
+      g.test_framework nil
+  end
   end
 end
