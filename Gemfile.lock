@@ -405,6 +405,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kamal
+  nokogiri
   pg
   propshaft
   puma (>= 5.0)
