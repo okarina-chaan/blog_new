@@ -10,5 +10,5 @@ services:
       - "3000:3000"
     environment:
       - RAILS_ENV=development
-    command: bundle exec rails server -b 0.0.0.0 -p 3000
+    entrypoint: ["sh", "-c", "rm -f /rails/tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0 -p 3000"]
 
