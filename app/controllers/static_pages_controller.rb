@@ -11,5 +11,14 @@ class StaticPagesController < ApplicationController
   end
 
   def portfolio
+    @projects = [
+      {
+        title: "Coming Soon...",
+        description: "現在、ポートフォリオを準備中です。",
+        image: "portfolio/coming_soon.png",
+        github_url: "#",
+        site_url: "#"
+      }
+    ]
   end
 end
