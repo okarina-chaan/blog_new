@@ -1,0 +1,27 @@
+<div class="max-w-5xl mx-auto px-4 md:px-10 lg:px-20 py-10">
+  <div class="flex flex-wrap justify-between items-center gap-4 p-4 mb-6">
+    <div class="flex flex-col gap-2">
+      <p class="text-4xl font-black leading-tight tracking-[-0.033em] text-text-main dark:text-text-dark">Blog</p>
+      <p class="text-base font-normal leading-normal text-text-main/70 dark:text-text-dark/70">
+        はてなブログの記事一覧を表示しています。
+      </p>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-4">
+    <% @articles.each do |article| %>
+      <%= link_to article.url, target: "_blank", rel: "noopener noreferrer",
+          class: "group block p-6 rounded-lg border border-primary/20 dark:border-primary/40 bg-background-light dark:bg-background-dark shadow-sm hover:shadow-lg hover:border-primary dark:hover:border-primary transition-all duration-300" do %>
+        <div class="flex justify-between items-center gap-4">
+          <h3 class="text-lg font-bold text-text-main dark:text-text-dark group-hover:text-primary transition-colors">
+            <%= article.title %>
+          </h3>
+          <p class="text-sm text-text-main/60 dark:text-text-dark/60 whitespace-nowrap">
+            <%= article.published_at.to_date.strftime("%Y-%m-%d") if article.published_at %>
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>
