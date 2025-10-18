@@ -1,3 +1,6 @@
+require 'net/http'
+require 'nokogiri'
+
 class HatenaBlogService
   BASE_URL = "https://blog.hatena.ne.jp"
  
@@ -8,13 +11,15 @@ class HatenaBlogService
   end
 
   def fetch_articles(limit: 10)
-    uri = URI.parse(HATENA_ATOM_URL)
+    uri = URI.parse(atom_url)
     request = Net::HTTP::Get.new(uri)
     request.basic_auth(ENV['HATENA_USERNAME'], ENV['HATENA_API_KEY'])
 
-    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
-      http.request(request)
-    end
+    http = Net::HTTP.new(uri.hostname, uri.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
+    
+    response = http.request(request)
 
     unless response.is_a?(Net::HTTPSuccess)
       Rails.logger.error("Hatena API Error: #{response.code} #{response.message}")
@@ -33,4 +38,20 @@ class HatenaBlogService
     "#{BASE_URL}/#{@username}/#{@blog_id}/atom/entry"
   end
 
+  def parse_articles(xml_body)
+    doc = Nokogiri::XML(xml_body)
+    
+    entries = doc.xpath('//atom:entry', 'atom' => 'http://www.w3.org/2005/Atom')
+
+    entries.map do |entry|
+      {
+        title: entry.at_xpath('atom:title', 'atom' => 'http://www.w3.org/2005/Atom')&.text,
+        url: entry.at_xpath('atom:link[@rel="alternate"]', 'atom' => 'http://www.w3.org/2005/Atom')&.[]('href'),
+        published_at: entry.at_xpath('atom:published', 'atom' => 'http://www.w3.org/2005/Atom')&.text,
+      }
+    end
+  rescue => e
+    Rails.logger.error("ParseArticles Error: #{e.message}")
+    []
+  end
 end
