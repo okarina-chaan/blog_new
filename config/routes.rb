@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "profile", to: "static_pages#profile"
 
   get "portfolio", to: "static_pages#portfolio"
-  
+
   get "articles", to: "articles#index"
 
   post "articles/sync", to: "articles#sync"
