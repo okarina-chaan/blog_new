@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   root to: "pages#index"
 
   get "profile", to: "static_pages#profile"
+
+  get "portfolio", to: "static_pages#portfolio"
 end

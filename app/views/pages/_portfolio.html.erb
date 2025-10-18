@@ -5,48 +5,26 @@
 ================================ -->
 <section id="portfolio" class="py-16 md:py-24 bg-highlight/20 dark:bg-gray-900 rounded-xl">
   <h2 class="text-3xl font-bold tracking-tight text-center mb-12 text-text-light dark:text-text-dark font-display">
-    最近のポートフォリオ
+    ポートフォリオ
   </h2>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6">
-    <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all overflow-hidden">
-      <%= image_tag "portfolio/sample-project.svg", 
-          alt: "プロジェクトA",
-          class: "w-full aspect-video object-cover" %>
-      <div class="p-6">
-        <h3 class="text-xl font-bold mb-2">プロジェクトA</h3>
-        <p class="text-gray-700 dark:text-gray-300 mb-4">
-          eコマースサイトのフロントエンドとバックエンド開発を担当しました。
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-8">
+    <!-- Coming Soon カード -->
+    <div class="card bg-base-100 dark:bg-gray-800 shadow-xl hover:scale-[1.02] transition-transform border border-accent/30">
+      <figure class="bg-gray-200 dark:bg-gray-700">
+        <img src="<%= asset_path('portfolio/coming_soon.png') %>" alt="Coming Soon" class="w-full h-48 object-cover opacity-80" />
+      </figure>
+      <div class="card-body">
+        <h3 class="text-xl font-bold mb-2 text-secondary">Coming Soon...</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">
+          現在、ポートフォリオを準備中です。<br>
+          公開まで今しばらくお待ちください。
         </p>
-        <%= link_to "詳細を見る →", "#", class: "text-primary font-bold hover:underline" %>
-      </div>
-    </div>
-
-    <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all overflow-hidden">
-      <%= image_tag "portfolio/sample-project.svg",
-          alt: "プロジェクトB",
-          class: "w-full aspect-video object-cover" %>
-      <div class="p-6">
-        <h3 class="text-xl font-bold mb-2">プロジェクトB</h3>
-        <p class="text-gray-700 dark:text-gray-300 mb-4">
-          ブログプラットフォームのCMS機能を実装しました。
-        </p>
-        <%= link_to "詳細を見る →", "#", class: "text-primary font-bold hover:underline" %>
-      </div>
-    </div>
-
-    <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-all overflow-hidden">
-      <%= image_tag "portfolio/sample-project.svg",
-          alt: "プロジェクトC",
-          class: "w-full aspect-video object-cover" %>
-      <div class="p-6">
-        <h3 class="text-xl font-bold mb-2">プロジェクトC</h3>
-        <p class="text-gray-700 dark:text-gray-300 mb-4">
-          タスク管理ツールのAPI連携機能を開発しました。
-        </p>
-        <%= link_to "詳細を見る →", "#", class: "text-primary font-bold hover:underline" %>
+        <div class="card-actions justify-end mt-4">
+          <%= link_to "GitHub", "#", class: "btn btn-outline btn-primary cursor-not-allowed opacity-50" %>
+          <%= link_to "サイトを見る", "#", class: "btn btn-primary cursor-not-allowed opacity-50" %>
+        </div>
       </div>
     </div>
   </div>
 </section>
-
