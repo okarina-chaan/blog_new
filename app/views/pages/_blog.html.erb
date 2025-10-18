@@ -1,19 +1,18 @@
-<section id="blog" class="py-16 md:py-24">
-  <h2 class="text-3xl font-bold text-center mb-12">最新のブログ記事</h2>
+<section id="blog" class="py-12 bg-background-light dark:bg-background-dark">
+  <div class="max-w-5xl mx-auto px-4 md:px-10">
+    <h2 class="text-3xl font-bold text-text-main dark:text-text-dark mb-8">最新のブログ記事</h2>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <% @articles = [
-      { title: "Rails 8で始めるAPI開発", summary: "Rails 8の新機能を使ってAPIを設計します。", image: "sample1.jpg", link: "#" },
-      { title: "daisyUIでUIを作る", summary: "Tailwindをベースに効率よくデザインを組む方法。", image: "sample2.jpg", link: "#" },
-      { title: "DockerでRails開発環境構築", summary: "コンテナ開発を楽にするDockerfileの作り方。", image: "sample3.jpg", link: "#" }
-    ] %>
+    <div class="grid gap-6 md:grid-cols-3">
+      <% articles.first(3).each do |article| %>
+        <%= render "shared/card",
+          title: article.title,
+          created_at: article.created_at,
+          link: article.url %>
+      <% end %>
+    </div>
 
-    <% @articles.each do |article| %>
-      <%= render "shared/card",
-          title: article[:title],
-          summary: article[:summary],
-          image: nil,
-          link: article[:link] %>
-    <% end %>
+    <div class="text-center mt-8">
+      <%= link_to "すべての記事を見る", articles_path, class: "text-primary font-bold hover:underline" %>
+    </div>
   </div>
 </section>
