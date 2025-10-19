@@ -2,13 +2,15 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile.dev   # 開発用
+      dockerfile: Dockerfile.dev
     volumes:
-      - .:/rails                   # ソースコードを同期
-      - ./db:/rails/db             # SQLite データを永続化
+      - .:/rails
+      - ./db:/rails/db
     ports:
       - "3000:3000"
     environment:
       - RAILS_ENV=development
-    command: bundle exec rails server -b 0.0.0.0 -p 3000
+    env_file:
+        - .env
+    entrypoint: ["sh", "-c", "rm -f /rails/tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0 -p 3000"]
 
