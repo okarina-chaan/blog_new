@@ -3,10 +3,10 @@
     <h2 class="text-3xl font-bold text-text-main dark:text-text-dark mb-8">最新のブログ記事</h2>
 
     <div class="grid gap-6 md:grid-cols-3">
-      <% articles.first(3).each do |article| %>
+      <% articles.each do |article| %>
         <%= render "shared/card",
           title: article.title,
-          created_at: article.created_at,
+          published_at: article.published_at,
           link: article.url %>
       <% end %>
     </div>
