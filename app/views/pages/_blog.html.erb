@@ -1,12 +1,23 @@
 <section id="blog" class="py-16 md:py-24">
   <h2 class="text-3xl font-bold text-center mb-12">最新のブログ記事</h2>
 
+<<<<<<< Updated upstream
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     <% @articles = [
       { title: "Rails 8で始めるAPI開発", summary: "Rails 8の新機能を使ってAPIを設計します。", image: "sample1.jpg", link: "#" },
       { title: "daisyUIでUIを作る", summary: "Tailwindをベースに効率よくデザインを組む方法。", image: "sample2.jpg", link: "#" },
       { title: "DockerでRails開発環境構築", summary: "コンテナ開発を楽にするDockerfileの作り方。", image: "sample3.jpg", link: "#" }
     ] %>
+=======
+    <div class="grid gap-6 md:grid-cols-3">
+      <% articles.first(3).each do |article| %>
+        <%= render "shared/card",
+          title: article.title,
+          published_at: article.published_at,
+          link: article.url %>
+      <% end %>
+    </div>
+>>>>>>> Stashed changes
 
     <% @articles.each do |article| %>
       <%= render "shared/card",
