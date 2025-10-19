@@ -12,7 +12,7 @@ class ArticleCache < ApplicationRecord
         ArticleCache.create!(
           title: article[:title],
           url: article[:url],
-          created_at: article[:created_at]
+          published_at: Time.parse(article[:published_at])
         )
       end
   rescue => e

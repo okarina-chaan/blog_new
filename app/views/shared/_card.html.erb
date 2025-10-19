@@ -1,7 +1,7 @@
 <div class="card bg-base-100 shadow-md hover:shadow-xl transition-transform hover:scale-105">
   <div class="card-body">
     <h3 class="card-title text-lg font-bold"><%= title %></h3>
-    <p class="text-gray-600 dark:text-gray-300"><%= created_at %></p>
+    <p class="text-gray-600 dark:text-gray-300"><%= published_at %></p>
     <% if link.present? %>
       <div class="card-actions justify-end">
         <%= link_to "続きを読む →", link, class: "text-primary font-bold hover:underline" %>

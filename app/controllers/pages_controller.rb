@@ -2,6 +2,6 @@ require "ostruct"
 
 class PagesController < ApplicationController
   def index
-    @articles = ArticleCache.all.order(created_at: :desc)
+  @articles = ArticleCache.all.order(published_at: :desc).limit(3)
   end
 end
