@@ -9,22 +9,22 @@
   </h2>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-8">
-    <!-- Coming Soon カード -->
-    <div class="card bg-base-100 dark:bg-gray-800 shadow-xl hover:scale-[1.02] transition-transform border border-accent/30">
-      <figure class="bg-gray-200 dark:bg-gray-700">
-        <img src="<%= asset_path('portfolio/coming_soon.png') %>" alt="Coming Soon" class="w-full h-48 object-cover opacity-80" />
-      </figure>
-      <div class="card-body">
-        <h3 class="text-xl font-bold mb-2 text-secondary">Coming Soon...</h3>
-        <p class="text-gray-600 dark:text-gray-300 mb-4">
-          現在、ポートフォリオを準備中です。<br>
-          公開まで今しばらくお待ちください。
-        </p>
-        <div class="card-actions justify-end mt-4">
-          <%= link_to "GitHub", "#", class: "btn btn-outline btn-primary cursor-not-allowed opacity-50" %>
-          <%= link_to "サイトを見る", "#", class: "btn btn-primary cursor-not-allowed opacity-50" %>
+    <% PortfolioService.projects.each do |project| %>
+      <div class="card bg-base-100 dark:bg-gray-800 shadow-xl hover:scale-[1.02] transition-transform border border-accent/30">
+        <figure class="bg-gray-200 dark:bg-gray-700">
+          <%= image_tag project[:image], alt: project[:title], class: "w-full h-48 object-cover" %>
+        </figure>
+        <div class="card-body">
+          <h3 class="text-xl font-bold mb-2 text-secondary"><%= project[:title] %></h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            <%= simple_format(project[:description]) %>
+          </p>
+          <div class="card-actions justify-end mt-4">
+            <%= link_to "GitHub", project[:github_url], target: "_blank", rel: "noopener noreferrer", class: "btn btn-outline btn-primary" %>
+            <%= link_to "サイトを見る", project[:site_url], target: "_blank", rel: "noopener noreferrer", class: "btn btn-primary" %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </section>
